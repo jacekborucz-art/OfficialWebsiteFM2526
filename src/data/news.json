@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "icon": "🎮",
+    "title": "Nowa wersja beta dostępna!",
+    "description": "Gra jest dostępna do testowania na fm26beta.vercel.app. Zgłaszajcie bugi i sugestie!",
+    "time": "Dziś",
+    "active": true
+  },
+  {
+    "id": 2,
+    "icon": "📺",
+    "title": "Zasubskrybuj kanał YouTube",
+    "description": "Na naszym kanale publikujemy gameplay, tutoriale i informacje o aktualizacjach.",
+    "time": "Trwa",
+    "active": true
+  },
+  {
+    "id": 3,
+    "icon": "🚀",
+    "title": "Gra jest w ciągłym rozwoju",
+    "description": "Pracujemy nad nowymi ligami, zawodnikami i mechanikami. Wkrótce więcej!",
+    "time": "Permanentnie",
+    "active": true
+  }
+]
