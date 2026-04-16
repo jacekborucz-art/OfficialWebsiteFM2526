@@ -191,22 +191,26 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="relative flex items-end justify-center overflow-hidden min-h-[115vh] md:min-h-[125vh]" style={{ marginTop: '72px' }}>
-        {/* Animated Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-[#050505] z-10" />
-          <motion.img
-            src="/grafika/theme.png"
-            alt="Manager Polskiej Ligi - Grafika tła strony głównej"
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{ transform: 'translateY(-12%)' }}
-            initial={{ scale: 1.05 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          />
-          {/* Floating orbs for ambiance */}
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-green-500/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        </div>
+{/* Animated Background */}
+<div className="absolute inset-0 z-0 overflow-hidden">
+  <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-[#050505] z-10" />
+  
+  <motion.div
+    className="absolute inset-0 bg-no-repeat"
+    style={{ 
+      backgroundImage: "url('/grafika/theme.png')", 
+      backgroundPosition: 'center top',
+      backgroundSize: '103% 100%'     // ← szerokość +3%, wysokość bez zmian
+    }}
+    initial={{ scale: 1.05 }}
+    animate={{ scale: 1.00 }}
+    transition={{ duration: 1.6, ease: "easeOut" }}
+  />
+  
+  {/* Floating orbs */}
+  <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-green-500/10 rounded-full blur-3xl animate-float" />
+  <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+</div>
 
         <div className="relative z-20 max-w-5xl mx-auto px-6 pb-72 md:pb-80 text-center">
           <motion.div
