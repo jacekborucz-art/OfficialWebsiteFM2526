@@ -190,14 +190,15 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: 'calc(100vh - 72px)', marginTop: '72px' }}>
+      <section className="relative flex items-end justify-center overflow-hidden min-h-[115vh] md:min-h-[125vh]" style={{ marginTop: '72px' }}>
         {/* Animated Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-[#050505] z-10" />
           <motion.img
             src="/grafika/theme.png"
             alt="Manager Polskiej Ligi - Grafika tła strony głównej"
-            className="w-full h-full object-contain object-center"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ transform: 'translateY(-12%)' }}
             initial={{ scale: 1.05 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -207,21 +208,25 @@ export default function App() {
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         </div>
 
-        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
+        <div className="relative z-20 max-w-5xl mx-auto px-6 pb-72 md:pb-80 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex flex-col items-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-green-400 mb-6 glow-green" style={{ marginTop: '50px' }}>
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-green-400 mb-3 glow-green">
               OPEN SOURCE
             </span>
-            <div className="p-4 mb-8">
-              <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-light">
+            <div className="mb-5">
+              <p
+                className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-bold uppercase tracking-wide text-[#d4af37] whitespace-nowrap"
+                style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.9)' }}
+              >
                 Najlepsza darmowa symulacja Polskiej Ligi w grach online.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a href="https://fm26beta.vercel.app/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-gradient-primary text-black font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2 group glow-green">
                 Przetestuj Wersje Beta na Vercel
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
