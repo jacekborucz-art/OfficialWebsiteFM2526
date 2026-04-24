@@ -314,7 +314,7 @@ export default function App() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <h3 className="font-bold text-white mb-1 group-hover:text-green-400 transition-colors">{item.icon} {item.title}</h3>
-                      <p className="text-white/60 text-sm">{item.description}</p>
+                      <p className="text-white/60 text-sm whitespace-pre-line">{item.description}</p>
                     </div>
                     <span className="text-xs text-green-400 whitespace-nowrap ml-4 font-medium">{item.time}</span>
                   </div>

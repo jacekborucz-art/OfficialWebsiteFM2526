@@ -44,13 +44,22 @@ const defaultNews = [
 
 const TIME_OPTIONS = ["Dziś", "Wczoraj", "Trwa", "Permanentnie", "Wkrótce"];
 
+function getTodayDateValue() {
+  const today = new Date();
+  const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000);
+
+  return localToday.toISOString().slice(0, 10);
+}
+
 function createEmptyFormData() {
+  const todayDate = getTodayDateValue();
+
   return {
     icon: "🎮",
     title: "",
     description: "",
-    time: "Dziś",
-    customDate: ""
+    time: formatDateLabel(todayDate),
+    customDate: todayDate
   };
 }
 
@@ -134,7 +143,7 @@ export default function AdminPanel() {
     }
   };
 
-  const handleEditNews = (news: typeof newsData[0]) => {
+  const handleEditNews = (news: typeof defaultNews[number]) => {
     setEditingId(news.id);
     setFormData({
       icon: news.icon,
@@ -367,7 +376,7 @@ export default function AdminPanel() {
                   </div>
                   <div className="mt-4">
                     <label className="block text-sm font-medium text-white/70 mb-2">
-                      Lub wybierz konkretną datę
+                      Data newsa
                     </label>
                     <input
                       type="date"
@@ -384,7 +393,7 @@ export default function AdminPanel() {
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 transition-colors"
                     />
                     <p className="mt-2 text-xs text-white/40">
-                      Wybrana data zastąpi etykietę typu Dziś lub Wkrótce.
+                      Domyślnie ustawiona jest dzisiejsza data. Możesz ją edytować ręcznie.
                     </p>
                   </div>
                 </div>
