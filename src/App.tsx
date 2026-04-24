@@ -598,7 +598,7 @@ export default function App() {
                         {step.link && <a href={step.url} className="text-green-400 underline">{step.link}</a>}
                         {step.code && <code className="text-green-400 bg-white/5 px-2 py-0.5 rounded text-xs block mt-1 font-mono">{step.code}</code>}
                       </p>
-                      {step.note && <p className="text-[10px] text-white/30 italic">{step.note}</p>}
+                      {step.note && <p className="text-sm leading-relaxed text-white/60">{step.note}</p>}
                     </div>
                   </div>
                 ))}
