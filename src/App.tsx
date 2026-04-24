@@ -107,6 +107,7 @@ export default function App() {
     { label: 'Galeria', href: '#simulation' },
     { label: 'Zarządzanie', href: '#management' },
     { label: 'Nota Prawna', href: '#disclaimer' },
+    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61572333071824', external: true },
   ];
 
   return (
@@ -135,6 +136,8 @@ export default function App() {
               <a 
                 key={link.href} 
                 href={link.href} 
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
                 className="hover:text-green-400 transition-colors relative group"
               >
                 {link.label}
@@ -174,6 +177,8 @@ export default function App() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
                 className="block text-white/80 hover:text-green-400 transition-colors py-2 text-lg font-medium"
               >
                 {link.label}
