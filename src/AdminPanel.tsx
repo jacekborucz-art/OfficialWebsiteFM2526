@@ -19,6 +19,7 @@ const defaultNews = [
     title: "Nowa wersja beta dostępna!",
     description: "Gra jest dostępna do testowania na fm26beta.vercel.app. Zgłaszajcie bugi i sugestie!",
     time: "Dziś",
+    customDate: "",
     active: true
   },
   {
@@ -27,6 +28,7 @@ const defaultNews = [
     title: "Zasubskrybuj kanał YouTube",
     description: "Na naszym kanale publikujemy gameplay, tutoriale i informacje o aktualizacjach.",
     time: "Trwa",
+    customDate: "",
     active: true
   },
   {
@@ -35,9 +37,41 @@ const defaultNews = [
     title: "Gra jest w ciągłym rozwoju",
     description: "Pracujemy nad nowymi ligami, zawodnikami i mechanikami. Wkrótce więcej!",
     time: "Permanentnie",
+    customDate: "",
     active: true
   }
 ];
+
+const TIME_OPTIONS = ["Dziś", "Wczoraj", "Trwa", "Permanentnie", "Wkrótce"];
+
+function createEmptyFormData() {
+  return {
+    icon: "🎮",
+    title: "",
+    description: "",
+    time: "Dziś",
+    customDate: ""
+  };
+}
+
+function formatDateLabel(dateValue: string) {
+  return new Intl.DateTimeFormat("pl-PL", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  }).format(new Date(`${dateValue}T12:00:00`));
+}
+
+function parseDateLabel(timeLabel: string) {
+  const match = timeLabel.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+
+  if (!match) {
+    return "";
+  }
+
+  const [, day, month, year] = match;
+  return `${year}-${month}-${day}`;
+}
 
 export default function AdminPanel() {
   const [news, setNews] = useState<typeof defaultNews>([]);
@@ -45,12 +79,7 @@ export default function AdminPanel() {
   const [password, setPassword] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [formData, setFormData] = useState({
-    icon: "🎮",
-    title: "",
-    description: "",
-    time: "Dziś"
-  });
+  const [formData, setFormData] = useState(createEmptyFormData);
 
   // Proste hasło (w produkcji użyj czegoś lepszego)
   const ADMIN_PASSWORD = "admin123";
@@ -95,7 +124,7 @@ export default function AdminPanel() {
     };
 
     setNews([newNews, ...news]);
-    setFormData({ icon: "🎮", title: "", description: "", time: "Dziś" });
+    setFormData(createEmptyFormData());
     setShowForm(false);
   };
 
@@ -111,7 +140,8 @@ export default function AdminPanel() {
       icon: news.icon,
       title: news.title,
       description: news.description,
-      time: news.time
+      time: news.time,
+      customDate: news.customDate || parseDateLabel(news.time)
     });
     setShowForm(true);
   };
@@ -125,7 +155,7 @@ export default function AdminPanel() {
     setNews(news.map(n => 
       n.id === editingId ? { ...n, ...formData } : n
     ));
-    setFormData({ icon: "🎮", title: "", description: "", time: "Dziś" });
+    setFormData(createEmptyFormData());
     setEditingId(null);
     setShowForm(false);
   };
@@ -226,7 +256,7 @@ export default function AdminPanel() {
             onClick={() => {
               setShowForm(true);
               setEditingId(null);
-              setFormData({ icon: "🎮", title: "", description: "", time: "Dziś" });
+              setFormData(createEmptyFormData());
             }}
             className="flex items-center gap-2 bg-gradient-primary text-black font-bold px-6 py-3 rounded-xl hover:opacity-90 transition-all glow-green"
           >
@@ -246,7 +276,7 @@ export default function AdminPanel() {
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="max-w-lg w-full glass-dark p-8 rounded-2xl border border-white/10"
+              className="max-w-2xl w-full glass-dark p-8 rounded-2xl border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6">
@@ -306,10 +336,13 @@ export default function AdminPanel() {
                   <textarea
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 transition-colors resize-none"
+                    rows={10}
+                    className="w-full min-h-[260px] bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 transition-colors resize-y leading-6"
                     placeholder="Wpisz opis newsa..."
                   />
+                  <p className="mt-2 text-xs text-white/40">
+                    Enter doda nowy wiersz w treści newsa.
+                  </p>
                 </div>
 
                 {/* Time Label */}
@@ -317,13 +350,13 @@ export default function AdminPanel() {
                   <label className="block text-sm font-medium text-white/70 mb-2">
                     Etykieta czasu
                   </label>
-                  <div className="flex gap-2">
-                    {["Dziś", "Wczoraj", "Trwa", "Permanentnie", "Wkrótce"].map(time => (
+                  <div className="flex gap-2 flex-wrap">
+                    {TIME_OPTIONS.map(time => (
                       <button
                         key={time}
-                        onClick={() => setFormData({ ...formData, time })}
+                        onClick={() => setFormData({ ...formData, time, customDate: "" })}
                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                          formData.time === time 
+                          formData.time === time && !formData.customDate
                             ? "bg-green-500/30 border-2 border-green-500 text-green-400" 
                             : "bg-white/5 border-2 border-transparent hover:border-white/20 text-white/60"
                         }`}
@@ -331,6 +364,28 @@ export default function AdminPanel() {
                         {time}
                       </button>
                     ))}
+                  </div>
+                  <div className="mt-4">
+                    <label className="block text-sm font-medium text-white/70 mb-2">
+                      Lub wybierz konkretną datę
+                    </label>
+                    <input
+                      type="date"
+                      value={formData.customDate}
+                      onChange={(e) => {
+                        const nextDate = e.target.value;
+
+                        setFormData({
+                          ...formData,
+                          customDate: nextDate,
+                          time: nextDate ? formatDateLabel(nextDate) : "Dziś"
+                        });
+                      }}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 transition-colors"
+                    />
+                    <p className="mt-2 text-xs text-white/40">
+                      Wybrana data zastąpi etykietę typu Dziś lub Wkrótce.
+                    </p>
                   </div>
                 </div>
 
@@ -373,7 +428,7 @@ export default function AdminPanel() {
                     <span className="text-2xl">{item.icon}</span>
                     <h3 className="font-bold text-lg text-white">{item.title}</h3>
                   </div>
-                  <p className="text-white/60 text-sm mb-2">{item.description}</p>
+                  <p className="text-white/60 text-sm mb-2 whitespace-pre-line">{item.description}</p>
                   <span className="text-xs text-green-400 font-medium">{item.time}</span>
                 </div>
                 <div className="flex gap-2">
