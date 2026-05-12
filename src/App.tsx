@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { motion, useInView } from "motion/react";
+import newsData from "./data/news.json";
 import {
   Trophy,
   Users,
@@ -52,11 +53,7 @@ export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
   // Load news from JSON file
-  const [news] = useState<Array<{ id: number; icon: string; title: string; description: string; time: string; active: boolean }>>([
-    { id: 1, icon: "🎮", title: "Nowa wersja beta dostępna!", description: "Gra jest dostępna do testowania na fm26beta.vercel.app. Zgłaszajcie bugi i sugestie!", time: "Dziś", active: true },
-    { id: 2, icon: "📺", title: "Zasubskrybuj kanał YouTube", description: "Na naszym kanale publikujemy gameplay, tutoriale i informacje o aktualizacjach.", time: "Trwa", active: true },
-    { id: 3, icon: "🚀", title: "Gra jest w ciągłym rozwoju", description: "Pracujemy nad nowymi ligami, zawodnikami i mechanikami. Wkrótce więcej!", time: "Permanentnie", active: true },
-  ]);
+  const [news] = useState(newsData.filter((n: any) => n.active !== false));
 
   // Scroll progress tracking
   useEffect(() => {
