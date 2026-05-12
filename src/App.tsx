@@ -141,7 +141,7 @@ export default function App() {
               Panel
             </a>
             <button 
-              onClick={() => window.open('https://fm26beta.vercel.app', '_blank')} 
+              onClick={() => window.open('https://gra.fmpl.pl/', '_blank')} 
               className="bg-gradient-primary text-black px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-all active:scale-95 glow-green"
             >
               Przetestuj wersję betę
@@ -188,7 +188,7 @@ export default function App() {
               Panel administracyjny
             </a>
             <button 
-              onClick={() => window.open('https://fm26beta.vercel.app', '_blank')}
+              onClick={() => window.open('https://gra.fmpl.pl/', '_blank')}
               className="w-full bg-gradient-primary text-black px-5 py-3 rounded-full font-bold mt-4"
             >
               Przetestuj wersję betę
@@ -239,7 +239,7 @@ export default function App() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a href="https://fm26beta.vercel.app/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-gradient-primary text-black font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2 group glow-green">
+              <a href="https://gra.fmpl.pl/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-gradient-primary text-black font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2 group glow-green">
                 Przetestuj Wersje Beta na Vercel
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -574,8 +574,8 @@ export default function App() {
                 <h3 className="text-xl font-bold uppercase">Wersja Online</h3>
               </div>
               <p className="text-white/60 mb-6 text-sm">Najszybszy sposób na grę bez instalacji czegokolwiek na komputerze.</p>
-              <a href="https://fm26beta.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-block w-full text-center py-3 bg-gradient-primary text-black font-bold rounded-xl hover:opacity-90 transition-all glow-green">
-                Otwórz fm26beta.vercel.app
+              <a href="https://gra.fmpl.pl/" target="_blank" rel="noopener noreferrer" className="inline-block w-full text-center py-3 bg-gradient-primary text-black font-bold rounded-xl hover:opacity-90 transition-all glow-green">
+                Otwórz gra.fmpl.pl
               </a>
             </motion.div>
 
@@ -655,7 +655,7 @@ export default function App() {
             {[
               { q: 'Czy gra jest całkowicie darmowa?', a: 'Tak! Gra jest całkowicie darmowa i taka ma pozostać. Nie ma żadnych ukrytych płatności, premium featur ani pay-to-win mechanik. To 100% fanowski projekt, a my nie zarabiamy na jego tworzeniu. Wszystko robiliśmy z pasji do piłki nożnej i gier symulacyjnych.' },
               { q: 'W jakim języku jest napisana ta gra?', a: '<strong className="text-white">Języki programowania:</strong><ul className="list-disc list-inside space-y-1 ml-2 mt-2"><li><strong className="text-white">TypeScript</strong> - główny język programowania</li><li><strong className="text-white">JavaScript</strong> - na nim działa gra w przeglądarce</li></ul><p className="mt-3 mb-2"><strong className="text-white">Technologie:</strong></p><ul className="list-disc list-inside space-y-1 ml-2"><li><strong className="text-white">React</strong> - framework do budowy interfejsu</li><li><strong className="text-white">Tailwind CSS</strong> - stylizacja</li><li><strong className="text-white">Vite</strong> - narzędzie build</li></ul>' },
-              { q: 'Jak uruchomić grę?', a: '<strong className="text-white">Najszybciej:</strong> Wejdź na <a href="https://fm26beta.vercel.app/" className="text-green-400 underline">fm26beta.vercel.app</a> i graj od razu.<br/><br/><strong className="text-white">Lokalnie:</strong> Pobierz grę, zainstaluj Node.js, uruchom <code className="bg-white/10 px-2 rounded text-green-400">npm install</code>, a następnie <code className="bg-white/10 px-2 rounded text-green-400">npm run dev</code>.' },
+              { q: 'Jak uruchomić grę?', a: '<strong className="text-white">Najszybciej:</strong> Wejdź na <a href="https://gra.fmpl.pl/" className="text-green-400 underline">gra.fmpl.pl</a> i graj od razu.<br/><br/><strong className="text-white">Lokalnie:</strong> Pobierz grę, zainstaluj Node.js, uruchom <code className="bg-white/10 px-2 rounded text-green-400">npm install</code>, a następnie <code className="bg-white/10 px-2 rounded text-green-400">npm run dev</code>.' },
               { q: 'Czy gra będzie nadal rozwijana?', a: '<strong className="text-white">Tak!</strong> Gra jest w ciągłym rozwoju. Regularnie dodajemy nowe features, poprawiamy AI, dodajemy nowe ligi i zawodników.' },
               { q: 'Czy mogę się dołączyć do tworzenia gry?', a: '<strong className="text-white">Oczywiście!</strong> Gra jest open source. Możesz czytać kod, zgłaszać bugi, tworzyć pull requests. Kontakt: <strong className="text-white">trenuje365@gmail.com</strong>' },
               { q: 'Wymagania systemowe - co potrzebuję?', a: '<strong className="text-white">Online:</strong> Nowoczesna przeglądarka, połączenie internetowe.<br/><br/><strong className="text-white">Lokalnie:</strong> Node.js v16+, ~1.3 GB miejsca. Zalecamy 8GB RAM.' },
