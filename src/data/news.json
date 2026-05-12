@@ -1,5 +1,13 @@
 [
   {
+    "id": 1778585218798,
+    "icon": "🎮",
+    "title": "Oryginalne składy",
+    "description": "Pewna osoba podesłała nam aktualizacje składów na MAJ 2026 \nInstrukcja instalacji:\n1. Ściągnąć składy w ZIP linkiem: https://limewire.com/d/N5UIo#WZI4GOxO3g\n2. Rozpakować ZIP gdziekolwiek \n3. Tutaj mamy dwie opcje do wyboru.\na) Jeśli już grasz w aktywnym sezonie to EDYTOR - IMPORTUJ SKŁADY - WYBIERASZ WSZYSTKIE PLIKI ROZPAKOWANE Z ZIP - GOTOWE\nb) Jeśli zaczynasz grę od nowa. Wybierasz klub - i zostaniesz przekierowany do okna w którym możesz wybrać pliki do importu - gotowe.\n\nMiłego managamentu.\n\n",
+    "time": "Dziś",
+    "active": true
+  },
+  {
     "id": 1778582929629,
     "icon": "🎮",
     "title": "MEGA UPDATE",
@@ -15,7 +23,6 @@
     "time": "Dziś",
     "active": true
   },
- 
   {
     "id": 2,
     "icon": "📺",
