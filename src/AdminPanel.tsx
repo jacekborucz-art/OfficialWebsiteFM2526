@@ -8,10 +8,13 @@ import {
   X,
   Shield,
   Eye,
-  Edit3
+  Edit3,
+  Download
 } from "lucide-react";
+import newsData from "./data/news.json";
 
 const TIME_OPTIONS = ["Dziś", "Wczoraj", "Trwa", "Permanentnie", "Wkrótce"];
+const STORAGE_KEY = "fm26_news";
 
 function createEmptyFormData() {
   return {
@@ -47,9 +50,30 @@ export default function AdminPanel() {
       if (response.ok) {
         const data = await response.json();
         setNews(data);
+      } else {
+        setError("Nie udało się załadować newsów");
       }
     } catch (err) {
-      setError("Nie udało się załadować newsów");
+      setError("Nie udało się załadować newsów. Sprawdź czy serwer jest uruchomiony.");
+    }
+  };
+
+  const saveNews = async (updatedNews: typeof news) => {
+    try {
+      const response = await fetch("/api/news", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedNews)
+      });
+
+      if (response.ok) {
+        setNews(updatedNews);
+        setError("");
+      } else {
+        setError("Nie udało się zapisać zmian");
+      }
+    } catch (err) {
+      setError("Błąd serwera. Sprawdź czy serwer jest uruchomiony.");
     }
   };
 
@@ -79,22 +103,9 @@ export default function AdminPanel() {
       };
 
       const updatedNews = [newNews, ...news];
-      const response = await fetch("/api/news", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedNews)
-      });
-
-      if (response.ok) {
-        setNews(updatedNews);
-        setFormData(createEmptyFormData());
-        setShowForm(false);
-        setError("");
-      } else {
-        setError("Nie udało się dodać newsa");
-      }
-    } catch (err) {
-      setError("Błąd serwera");
+      await saveNews(updatedNews);
+      setFormData(createEmptyFormData());
+      setShowForm(false);
     } finally {
       setLoading(false);
     }
@@ -106,20 +117,7 @@ export default function AdminPanel() {
     setLoading(true);
     try {
       const updatedNews = news.filter(n => n.id !== id);
-      const response = await fetch("/api/news", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedNews)
-      });
-
-      if (response.ok) {
-        setNews(updatedNews);
-        setError("");
-      } else {
-        setError("Nie udało się usunąć newsa");
-      }
-    } catch (err) {
-      setError("Błąd serwera");
+      await saveNews(updatedNews);
     } finally {
       setLoading(false);
     }
@@ -147,24 +145,10 @@ export default function AdminPanel() {
       const updatedNews = news.map(n => 
         n.id === editingId ? { ...n, ...formData } : n
       );
-
-      const response = await fetch("/api/news", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedNews)
-      });
-
-      if (response.ok) {
-        setNews(updatedNews);
-        setFormData(createEmptyFormData());
-        setEditingId(null);
-        setShowForm(false);
-        setError("");
-      } else {
-        setError("Nie udało się zaktualizować newsa");
-      }
-    } catch (err) {
-      setError("Błąd serwera");
+      await saveNews(updatedNews);
+      setFormData(createEmptyFormData());
+      setEditingId(null);
+      setShowForm(false);
     } finally {
       setLoading(false);
     }
@@ -176,21 +160,7 @@ export default function AdminPanel() {
       const updatedNews = news.map(n => 
         n.id === id ? { ...n, active: !n.active } : n
       );
-
-      const response = await fetch("/api/news", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedNews)
-      });
-
-      if (response.ok) {
-        setNews(updatedNews);
-        setError("");
-      } else {
-        setError("Nie udało się zaktualizować newsa");
-      }
-    } catch (err) {
-      setError("Błąd serwera");
+      await saveNews(updatedNews);
     } finally {
       setLoading(false);
     }
