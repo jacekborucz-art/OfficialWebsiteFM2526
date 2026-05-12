@@ -15,14 +15,7 @@
     "time": "Dziś",
     "active": true
   },
-  {
-    "id": 1,
-    "icon": "🎮",
-    "title": "Nowa wersja beta dostępna!",
-    "description": "Gra jest dostępna do testowania na fm26beta.vercel.app. Zgłaszajcie bugi i sugestie!",
-    "time": "Dziś",
-    "active": true
-  },
+ 
   {
     "id": 2,
     "icon": "📺",
