@@ -31,9 +31,9 @@ app.post('/api/news', (req, res) => {
   }
 });
 
-// Admin panel route
+// Admin panel route - redirect to hash route
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.redirect('/#/admin');
 });
 
 const PORT = process.env.PORT || 5000;
