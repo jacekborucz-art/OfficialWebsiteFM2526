@@ -132,12 +132,21 @@ export default function App() {
             ))}
           </div>
           
-          <button 
-            onClick={() => window.open('https://fm26beta.vercel.app', '_blank')} 
-            className="hidden md:block bg-gradient-primary text-black px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-all active:scale-95 glow-green"
-          >
-            Przetestuj wersję betę
-          </button>
+          <div className="hidden md:flex items-center gap-3">
+            <a 
+              href="/#/admin" 
+              className="flex items-center gap-2 bg-gray-900/60 hover:bg-gray-800/80 border border-white/10 hover:border-green-400/30 text-white/80 hover:text-green-400 px-4 py-2 rounded-full text-sm font-medium transition-all active:scale-95"
+            >
+              <Shield className="w-4 h-4" />
+              Panel
+            </a>
+            <button 
+              onClick={() => window.open('https://fm26beta.vercel.app', '_blank')} 
+              className="bg-gradient-primary text-black px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-all active:scale-95 glow-green"
+            >
+              Przetestuj wersję betę
+            </button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button 
@@ -170,6 +179,14 @@ export default function App() {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/#/admin"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center gap-2 text-white/80 hover:text-green-400 transition-colors py-2 text-lg font-medium"
+            >
+              <Shield className="w-5 h-5" />
+              Panel administracyjny
+            </a>
             <button 
               onClick={() => window.open('https://fm26beta.vercel.app', '_blank')}
               className="w-full bg-gradient-primary text-black px-5 py-3 rounded-full font-bold mt-4"
