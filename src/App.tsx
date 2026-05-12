@@ -1,6 +1,7 @@
 /// <reference types="react" />
 /// <reference types="react-dom" />
 import React, { useEffect, useRef, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { motion, useInView } from "motion/react";
 import {
   Trophy,
@@ -806,6 +807,7 @@ export default function App() {
 
       {/* Scroll to Top Button */}
       <ScrollToTop />
+      <Analytics />
     </div>
   );
 }
