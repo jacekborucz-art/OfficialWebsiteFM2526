@@ -1,6 +1,12 @@
 [
-
-
+  {
+    "id": 1778582929629,
+    "icon": "🎮",
+    "title": "MEGA UPDATE",
+    "description": "To już nie zwykła gierka ale skomplikowane narzędzie piłkarskie, świat w którym dzieje się tak dużo, że aby to wszystko ogarnąć potrzeba naprawdę kilku godzin dziennie, a to jeszcze nie koniec ponieważ coraz więcej funkcji pojawia się w grze. \nJuż teraz jako trener masz niemal 95% wpływu na to jaki przebieg będzie miała Twoja kariera (te pozostałe 5% to tak jak w życiu - nie na wszystko mamy wpływ, upierdliwy dyrektor sportowy, skąpy prezes, kapryśny piłkarz, zły dzień i pogoda).\nMotywuj zawodników indywidualnie, wchodź z nimi w interakcje. Każdy ruch w grze jest ściśle obserwowany przez logikę i ma większy lub mniejszy wpływ na przyszłość Twojego klubu. \n\nOczekujcie jeszcze więcej i czekamy na kolejne zgłoszenia ulepszeń oraz poprawek.",
+    "time": "Dziś",
+    "active": true
+  },
   {
     "id": 1,
     "icon": "🎮",
@@ -9,7 +15,6 @@
     "time": "Dziś",
     "active": true
   },
-
   {
     "id": 1,
     "icon": "🎮",
