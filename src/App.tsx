@@ -25,7 +25,11 @@ import {
   Star,
   BarChart3,
   Map,
-  Youtube
+  Youtube,
+  Download,
+  Package,
+  CheckCircle2,
+  Heart
 } from "lucide-react";
 
 // Hook for scroll animations
@@ -54,6 +58,7 @@ export default function App() {
   const [imageLoaded, setImageLoaded] = useState(false);
   // Load news from JSON file
   const [news] = useState(newsData.filter((n: any) => n.active !== false));
+  const downloadUrl = "https://drive.google.com/drive/folders/1L7TGja4QufyhLGXbd25rs60goteSmvS6?usp=sharing";
 
   // Scroll progress tracking
   useEffect(() => {
@@ -227,6 +232,7 @@ export default function App() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center"
           >
+            <DownloadReadyBadge />
             <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-green-400 mb-3 glow-green">
               OPEN SOURCE
             </span>
@@ -238,10 +244,14 @@ export default function App() {
                 Najlepsza darmowa symulacja Polskiej Ligi w grach online.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
               <a href="https://gra.fmpl.pl/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-gradient-primary text-black font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2 group glow-green">
                 Przetestuj Wersje Beta na Vercel
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a href="#pobierz" className="w-full sm:w-auto px-8 py-4 bg-white/10 border border-green-400/30 text-green-400 font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+                <Download className="w-5 h-5" />
+                Pobierz Grę
               </a>
               <a href="#install" className="w-full sm:w-auto px-8 py-4 glass font-bold uppercase tracking-wider rounded-xl hover:bg-white/10 transition-all">
                 Instrukcja Uruchomienia
@@ -286,6 +296,119 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* Download Section */}
+      <SectionAnimation>
+      <section id="pobierz" className="py-24 px-6 relative overflow-hidden bg-[#050505]">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-green-500/10 rounded-full blur-[140px] -z-10" />
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-green-400 mb-4 glow-green bg-green-500/10 border border-green-500/20">
+              <Download className="w-3.5 h-3.5" />
+              Gra dostępna już teraz
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase mb-4">
+              Pobierz <span className="text-gradient-green">Grę</span>
+            </h2>
+            <p className="text-white/50 max-w-2xl mx-auto">
+              Gra jest już gotowa do ściągnięcia! Zobaczcie co znajdziecie w środku i jak w kilku krokach uruchomić ją u siebie.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="glass p-8 rounded-3xl"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                  <Trophy className="w-6 h-6 text-green-400" />
+                </div>
+                <h3 className="text-xl font-bold uppercase">Co znajdziecie w grze?</h3>
+              </div>
+              <ul className="space-y-3 text-sm text-white/70">
+                {[
+                  'Pełna symulacja managera: mecze, transfery, treningi, interakcje oraz wiele, wiele innych szczegółów, których nie powstydziłby się najlepszy na świecie manager.',
+                  'Sezony 25/26 oraz 26/27.',
+                  'Wszystkie europejskie i światowe rozgrywki (stary format — nowy nam się nie podoba).',
+                  'Pełne 3 ligi.',
+                  'Ponad 30 tys. zawodników.',
+                  'Wszystkie reprezentacje świata.',
+                  'Setki światowych klubów.',
+                  'Pełny Edytor, w którym można edytować w zasadzie każdy aspekt gry. Uwaga! Edytor w menu startowym gry oraz w Dashboardzie to dwa różne edytory, ale spełniające w zasadzie tę samą funkcję.',
+                  'I wiele, wiele innych rzeczy, które sami odkryjecie.',
+                ].map((text, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span>{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="glass p-8 rounded-3xl border-green-500/20 glow-green"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                  <Download className="w-6 h-6 text-green-400" />
+                </div>
+                <h3 className="text-xl font-bold uppercase">Jak uruchomić grę?</h3>
+              </div>
+              <p className="text-white/60 mb-6 text-sm">Zerknijcie też na zrzuty ekranu w <a href="#simulation" className="text-green-400 underline">galerii</a>, jeśli macie wątpliwości.</p>
+              <div className="space-y-4 text-sm mb-8">
+                {[
+                  { num: 1, text: 'Ściągnij i wypakuj ZIP-a w dowolnym miejscu na dysku.', link: 'Pobierz grę', url: downloadUrl },
+                  { num: 2, text: 'Gra odpala się za pomocą przeglądarki, która uruchamia się w tle.', note: 'Okno "Wczytaj składy z pliku" można pominąć — chyba że sam edytujesz poszczególne opcje w grze (służy do tego Edytor w Dashboardzie).' },
+                  { num: 3, text: '(Opcjonalnie) Jeśli chcesz mieć oryginalne drużyny i składy, ściągnij DataPack pod tym samym linkiem, w folderze z grą. Wypakuj ZIP w dowolnym miejscu.' },
+                  { num: 4, text: 'Uruchom grę. W menu wgraj DataPack, wybierz klub i graj!' },
+                ].map((step, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-primary text-black flex items-center justify-center font-bold text-xs">{step.num}</div>
+                    <div>
+                      <p className="text-white/70 mb-1">
+                        {step.text}{' '}
+                        {step.link && <a href={step.url} target="_blank" rel="noopener noreferrer" className="text-green-400 underline">{step.link}</a>}
+                      </p>
+                      {step.note && <p className="text-sm leading-relaxed text-white/60">{step.note}</p>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <a href={downloadUrl} target="_blank" rel="noopener noreferrer" className="inline-flex w-full items-center justify-center gap-2 py-3 bg-gradient-primary text-black font-bold rounded-xl hover:opacity-90 transition-all glow-green">
+                <Download className="w-5 h-5" />
+                Pobierz Grę z Google Drive
+              </a>
+            </motion.div>
+          </div>
+
+          <motion.div
+            whileHover={{ y: -3 }}
+            className="glass-dark p-8 rounded-3xl border border-white/5 text-center"
+          >
+            <Heart className="w-8 h-8 text-red-400 mx-auto mb-4" />
+            <h3 className="text-lg font-bold uppercase mb-6">Specjalne podziękowania</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p className="text-white/40 uppercase tracking-widest text-xs font-bold mb-3">Testerzy</p>
+                <p className="text-white/70 leading-relaxed">PJ BRO, Gerard Horwath, Kacper Kiełek, Tomasz Czapla, Damian Kula, Krystian Andryańczyk, Paweł Bajon</p>
+              </div>
+              <div>
+                <p className="text-white/40 uppercase tracking-widest text-xs font-bold mb-3">Twórca DataPack</p>
+                <p className="text-white/70 leading-relaxed">Tomasz Czapla</p>
+              </div>
+            </div>
+            <div className="mt-8 pt-6 border-t border-white/5">
+              <p className="text-white/50 text-sm mb-4">Chcesz dołączyć do naszego projektu?</p>
+              <a href="https://www.facebook.com/profile.php?id=61572333071824" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-full text-sm font-medium hover:bg-white/10 transition-all hover:scale-105">
+                Napisz do nas na Facebooku
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      </SectionAnimation>
 
       {/* News Section */}
       <SectionAnimation>
@@ -579,32 +702,30 @@ export default function App() {
               </a>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               whileHover={{ y: -5 }}
               className="glass p-8 rounded-3xl"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                  <LayoutDashboard className="w-6 h-6 text-purple-400" />
+                  <Package className="w-6 h-6 text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold uppercase">Wersja Lokalna <span className="text-sm text-purple-400">(Wkrótce)</span></h3>
+                <h3 className="text-xl font-bold uppercase">Wersja do Pobrania</h3>
               </div>
-              <p className="text-white/60 mb-6 text-sm">Pobierz folder <code className="text-green-400 bg-white/5 px-2 py-1 rounded text-xs">FMPL25_26</code> i uruchom grę u siebie.</p>
+              <p className="text-white/60 mb-6 text-sm">Pobierz gotową paczkę gry i graj offline u siebie na dysku.</p>
               <div className="space-y-4 text-sm">
                 {[
-                  { num: 1, text: 'Pobierz i zainstaluj', link: 'Node.js', url: 'https://nodejs.org', note: 'To środowisko niezbędne do działania gry.' },
-                  { num: 2, text: 'Pobierz grę i umieść folder na dysku, np.', code: 'C:\\FMPL25_26' },
-                  { num: 3, text: 'Otwórz CMD i wejdź do folderu:', code: 'C:\\Users\\User> cd C:\\FMPL25_26' },
-                  { num: 4, text: 'Zainstaluj biblioteki:', code: 'C:\\FMPL25_26> npm install' },
-                  { num: 5, text: 'Uruchom grę:', code: 'C:\\FMPL25_26> npm run dev', note: 'Skopiuj adres, który się pojawi (np. http://localhost:5173) do przeglądarki i graj!' },
+                  { num: 1, text: 'Ściągnij i wypakuj ZIP-a z grą w dowolnym miejscu na dysku.', link: 'Pobierz grę', url: downloadUrl },
+                  { num: 2, text: 'Gra odpala się za pomocą przeglądarki, która uruchamia się w tle.', note: 'Okno "Wczytaj składy z pliku" można pominąć — chyba że sam edytujesz poszczególne opcje w grze (służy do tego Edytor w Dashboardzie).' },
+                  { num: 3, text: '(Opcjonalnie) Jeśli chcesz mieć oryginalne drużyny i składy, ściągnij DataPack pod tym samym linkiem, w folderze z grą. Wypakuj ZIP w dowolnym miejscu.' },
+                  { num: 4, text: 'Uruchom grę. W menu wgraj DataPack, wybierz klub i graj!' },
                 ].map((step, idx) => (
                   <div key={idx} className="flex gap-4">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-primary text-black flex items-center justify-center font-bold text-xs">{step.num}</div>
                     <div>
                       <p className="text-white/70 mb-1">
                         {step.text}{' '}
-                        {step.link && <a href={step.url} className="text-green-400 underline">{step.link}</a>}
-                        {step.code && <code className="text-green-400 bg-white/5 px-2 py-0.5 rounded text-xs block mt-1 font-mono">{step.code}</code>}
+                        {step.link && <a href={step.url} target="_blank" rel="noopener noreferrer" className="text-green-400 underline">{step.link}</a>}
                       </p>
                       {step.note && <p className="text-sm leading-relaxed text-white/60">{step.note}</p>}
                     </div>
@@ -846,6 +967,54 @@ function ScrollToTop() {
     >
       <ChevronUp className="w-6 h-6" />
     </motion.button>
+  );
+}
+
+// Animated "Ready to Download" SVG Badge
+function DownloadReadyBadge() {
+  return (
+    <div className="relative w-36 h-36 md:w-40 md:h-40 flex items-center justify-center mb-4 mx-auto">
+      <motion.div
+        className="absolute inset-0 rounded-full bg-green-500/30 blur-2xl"
+        animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.1, 0.9] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <svg viewBox="0 0 200 200" className="relative w-full h-full drop-shadow-[0_0_25px_rgba(34,197,94,0.5)]">
+        <defs>
+          <path id="badge-circle-path" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
+          <radialGradient id="badgeFill" cx="50%" cy="45%" r="65%">
+            <stop offset="0%" stopColor="#0c1f14" />
+            <stop offset="100%" stopColor="#020403" />
+          </radialGradient>
+          <linearGradient id="badgeRing" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#4ade80" />
+            <stop offset="100%" stopColor="#059669" />
+          </linearGradient>
+        </defs>
+
+        <circle cx="100" cy="100" r="96" fill="none" stroke="url(#badgeRing)" strokeWidth="2" opacity="0.6" />
+        <circle cx="100" cy="100" r="86" fill="url(#badgeFill)" stroke="url(#badgeRing)" strokeWidth="3" />
+
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="18s" repeatCount="indefinite" />
+          <text fill="#4ade80" fontSize="10.5" fontWeight="700" letterSpacing="2.5">
+            <textPath href="#badge-circle-path" startOffset="0%">
+              GRA GOTOWA DO POBRANIA • GRA GOTOWA DO POBRANIA •
+            </textPath>
+          </text>
+        </g>
+
+        <circle cx="100" cy="100" r="46" fill="rgba(34,197,94,0.08)" />
+        <foreignObject x="70" y="58" width="60" height="44">
+          <div className="w-full h-full flex items-center justify-center">
+            <Download className="w-7 h-7 text-green-400" />
+          </div>
+        </foreignObject>
+        <text x="100" y="138" textAnchor="middle" fill="white" fontSize="13" fontWeight="800" letterSpacing="0.5">
+          JUŻ DOSTĘPNA!
+        </text>
+      </svg>
+    </div>
   );
 }
 
