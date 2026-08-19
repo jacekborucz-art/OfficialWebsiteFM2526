@@ -121,6 +121,24 @@ nav{
   transform:rotate(-2deg);display:inline-block;
   margin-bottom:10px;
 }
+.hero-tag{
+  display:inline-block;
+  background:var(--magnes-yellow);color:#3a2a05;
+  font-size:1rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:14px 30px;border-radius:6px;
+  box-shadow:0 4px 0 rgba(0,0,0,.35), 0 0 0 0 rgba(242,179,61,.55);
+  transform:rotate(-3deg);
+  text-decoration:none;
+  margin-bottom:18px;
+  transition:transform .18s cubic-bezier(.34,1.56,.64,1);
+  animation:heroTagPulse 1.8s ease-in-out infinite;
+}
+.hero-tag:hover,.hero-tag:focus-visible{transform:rotate(-3deg) translateY(-2px) scale(1.05)}
+.hero-tag:active{transform:rotate(-3deg) translateY(1px)}
+@keyframes heroTagPulse{
+  0%,100%{box-shadow:0 4px 0 rgba(0,0,0,.35), 0 0 0 0 rgba(242,179,61,.55)}
+  50%{box-shadow:0 4px 0 rgba(0,0,0,.35), 0 0 0 16px rgba(242,179,61,0)}
+}
 h1{
   font-weight:800;text-transform:uppercase;
   font-size:clamp(2.6rem,6vw,4.6rem);
@@ -417,7 +435,7 @@ footer a:hover{color:var(--kreda)}
       <a href="#tryby">Co cię czeka</a>
       <a href="#tydzien">Tydzień trenera</a>
       <a href="#opensource">Open source</a>
-      <a class="btn small" href="https://gra.fmpl.pl/">Graj teraz</a>
+      <a class="btn small" href="https://gra.fmpl.pl/" target="_blank" rel="noopener">Graj teraz</a>
     </div>
   </div>
 </nav>
@@ -425,11 +443,13 @@ footer a:hover{color:var(--kreda)}
 <header class="hero">
   <div class="hero-grid">
     <div>
-      <span class="eyebrow">Odprawa przed meczem —</span>
+      <a class="hero-tag" href="https://drive.google.com/drive/folders/1L7TGja4QufyhLGXbd25rs60goteSmvS6?usp=sharing" target="_blank" rel="noopener">🎮 Pobierz pełną wersję</a>
+      <br>
+      <span class="eyebrow">Odprawa przed meczem →</span>
       <h1>Zostań pierwszym <span class="accent">trenerem<svg viewBox="0 0 200 18" preserveAspectRatio="none"><path d="M3 12 C 60 4, 140 16, 197 8"/></svg></span> polskiej ligi</h1>
       <p class="lead">Darmowa symulacja piłkarska, w której to Ty rozstawiasz magnesy na tablicy. Taktyka, składy, transfery i szatnia pełna charakterów — wszystko w Twoich rękach.</p>
       <div class="hero-ctas">
-        <a class="btn" href="https://gra.fmpl.pl/">Graj za darmo</a>
+        <a class="btn" href="https://gra.fmpl.pl/" target="_blank" rel="noopener">Graj za darmo</a>
         <a class="btn outline" href="#tryby">Zobacz, co cię czeka</a>
       </div>
       <p class="hero-note">Bez rejestracji, bez mikropłatności. <b>Tylko futbol.</b></p>
@@ -484,6 +504,20 @@ footer a:hover{color:var(--kreda)}
 </header>
 
 <main>
+  <section id="pelna-wersja">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Pełny skład na start →</span>
+        <h2>Pełna wersja gry jest już dostępna</h2>
+        <p>To już nie beta, a kompletne narzędzie do zarządzania klubem — taktyka, transfery, rozwój zawodników i interakcje z szatnią. Zagraj od razu w przeglądarce albo ściągnij grę i odpal ją lokalnie na swoim dysku, z oryginalnymi składami na maj 2026 w zestawie.</p>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn" href="https://gra.fmpl.pl/" target="_blank" rel="noopener">Graj online</a>
+        <a class="btn outline" href="https://drive.google.com/drive/folders/1L7TGja4QufyhLGXbd25rs60goteSmvS6?usp=sharing" target="_blank" rel="noopener">Pobierz grę (ZIP)</a>
+      </div>
+    </div>
+  </section>
+
   <section id="tryby">
     <div class="wrap">
       <div class="sec-head reveal">
@@ -493,8 +527,8 @@ footer a:hover{color:var(--kreda)}
       </div>
       <div class="cards">
         <div class="card reveal"><div class="magnet m-red">XI</div><h3>Taktyka i skład</h3><p>Ustaw formację, wybierz jedenastkę i reaguj zmianami w trakcie meczu. Każdy magnes na tablicy to Twoja decyzja.</p></div>
-        <div class="card reveal d1"><div class="magnet m-yellow">★</div><h3>Rozwój zawodników</h3><p>Prowadź treningi, dawaj szansę młodzieży i patrz, jak talenty z akademii wyrastają na liderów zespołu.</p></div>
-        <div class="card reveal d2"><div class="magnet m-blue">↔</div><h3>Transfery</h3><p>Współpracuj z klubem przy wzmocnieniach. Wskaż braki w kadrze i walcz o piłkarzy, którzy pasują do Twojego stylu gry.</p></div>
+        <div class="card reveal d1"><div class="magnet m-yellow">↗</div><h3>Rozwój zawodników</h3><p>Prowadź treningi, dawaj szansę młodzieży i patrz, jak talenty z akademii wyrastają na liderów zespołu.</p></div>
+        <div class="card reveal d2"><div class="magnet m-blue">⇄</div><h3>Transfery</h3><p>Współpracuj z klubem przy wzmocnieniach. Wskaż braki w kadrze i walcz o piłkarzy, którzy pasują do Twojego stylu gry.</p></div>
         <div class="card reveal d3"><div class="magnet m-white">⚽</div><h3>Polska liga</h3><p>Realia rodzimych rozgrywek: derby, walka o europejskie puchary i o utrzymanie. Tu każda kolejka ma znaczenie.</p></div>
       </div>
     </div>
@@ -537,7 +571,7 @@ footer a:hover{color:var(--kreda)}
     <span class="eyebrow">Pierwszy gwizdek</span>
     <h2>Tablica czeka.<br>Rozstaw swoje magnesy.</h2>
     <p>Wybierz klub, ustaw skład i poprowadź drużynę po mistrzostwo Polski.</p>
-    <a class="btn" href="https://gra.fmpl.pl/">Zagraj teraz — za darmo</a>
+    <a class="btn" href="https://gra.fmpl.pl/" target="_blank" rel="noopener">Zagraj teraz — za darmo</a>
     <div class="socials">
       <a class="social-link" href="https://www.facebook.com/profile.php?id=61572333071824" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="fill:none">
@@ -669,7 +703,7 @@ if(!reduceMotion && finePointer){
     target.y = Math.max(20, Math.min(540, p.y));
   });
 
-  // click anywhere on the board — shot on the top goal
+  // click anywhere on the board → shot on the top goal
   board.addEventListener('click', ()=>{
     if(shooting || !inside) return;
     shooting = true;
