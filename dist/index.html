@@ -184,13 +184,13 @@ h1 .accent path{
 .hero-note b{color:var(--magnes-yellow);font-weight:700}
 
 /* ===== Baner: nowa wersja beta ===== */
-.hero{align-content:center;row-gap:44px}
+.hero{align-content:center;row-gap:30px;padding-top:96px}
 .beta-banner{
   max-width:var(--maxw);width:100%;position:relative;
   background:var(--kreda);color:var(--tablica-dark);
-  border-radius:12px;padding:34px 36px 26px;
+  border-radius:12px;padding:24px 34px 16px;
   box-shadow:0 8px 0 rgba(0,0,0,.35), 0 24px 60px rgba(0,0,0,.45);
-  display:grid;grid-template-columns:1fr 1.25fr;gap:14px 40px;align-items:center;
+  display:grid;grid-template-columns:1fr 1.25fr;gap:10px 40px;align-items:center;
 }
 .beta-banner::before{
   content:"NOWOŚĆ";
@@ -202,20 +202,20 @@ h1 .accent path{
 }
 .beta-banner h2{
   font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:800;text-transform:uppercase;
-  line-height:1;margin-bottom:10px;color:var(--tablica-dark);
+  line-height:1;margin-bottom:8px;color:var(--tablica-dark);
 }
-.beta-banner .beta-sub{font-size:1.05rem;margin-bottom:18px;color:rgba(15,40,32,.8);max-width:34ch}
+.beta-banner .beta-sub{font-size:1.05rem;margin-bottom:14px;color:rgba(15,40,32,.8);max-width:34ch}
 .beta-banner .btn{background:var(--tablica-dark);color:var(--kreda)}
 .beta-banner .btn:hover,.beta-banner .btn:focus-visible{color:var(--kreda)}
 .beta-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
 .beta-feats li{padding-left:16px;border-left:4px solid var(--magnes-yellow);font-size:.95rem;line-height:1.3}
-.beta-feats b{display:block;font-size:1.1rem;font-weight:800}
+.beta-feats b{display:block;font-size:1.25rem;font-weight:800}
 .beta-foot{
-  grid-column:1/-1;border-top:1px dashed rgba(15,40,32,.3);padding-top:14px;margin-top:6px;
+  grid-column:1/-1;border-top:1px dashed rgba(15,40,32,.3);padding-top:10px;margin-top:2px;
   font-size:.92rem;color:rgba(15,40,32,.8);display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;
 }
 .beta-foot a{color:var(--tablica-dark);font-weight:700}
-@media(max-width:900px){.beta-banner{grid-template-columns:1fr;padding:34px 22px 22px}}
+@media(max-width:900px){.beta-banner{grid-template-columns:1fr;padding:28px 22px 16px}}
 @media(max-width:520px){.beta-feats{grid-template-columns:1fr}}
 
 /* ===== Pitch board ===== */
@@ -500,22 +500,19 @@ footer a:hover{color:var(--kreda)}
       <a class="btn" href="https://beta.fmpl.pl/" target="_blank" rel="noopener">Przetestuj nową wersję beta</a>
     </div>
     <ul class="beta-feats">
-      <li><b>Nowy design</b>Zupełnie nowy wygląd całej gry.</li>
-      <li><b>Dużo więcej funkcji</b>Znacznie więcej możliwości w grze.</li>
-      <li><b>Głębszy świat futbolu</b>Bogatszy, pełniejszy piłkarski świat.</li>
-      <li><b>Nowy silnik meczowy</b>Zupełnie nowy sposób rozgrywania meczów.</li>
+      <li><b>Nowy design</b></li>
+      <li><b>Dużo więcej funkcji</b></li>
+      <li><b>Głębszy świat futbolu</b></li>
+      <li><b>Nowy silnik meczowy</b></li>
     </ul>
     <p class="beta-foot"><span>Zupełnie nowy poziom gry.</span><span>Poprzedni projekt nie jest już rozwijany: <a href="https://gra.fmpl.pl/" target="_blank" rel="noopener">gra.fmpl.pl</a></span></p>
   </aside>
   <div class="hero-grid">
     <div>
-      <a class="hero-tag" href="https://beta.fmpl.pl/" target="_blank" rel="noopener">🎮 NOWA WERSJA BETA</a>
-      <br>
       <span class="eyebrow">Odprawa przed meczem →</span>
       <h1>Zostań pierwszym <span class="accent">trenerem<svg viewBox="0 0 200 18" preserveAspectRatio="none"><path d="M3 12 C 60 4, 140 16, 197 8"/></svg></span> polskiej ligi</h1>
       <p class="lead">Darmowa symulacja piłkarska, w której to Ty rozstawiasz magnesy na tablicy. Taktyka, składy, transfery i szatnia pełna charakterów — wszystko w Twoich rękach.</p>
       <div class="hero-ctas">
-        <a class="btn" href="https://beta.fmpl.pl/" target="_blank" rel="noopener">Graj za darmo</a>
         <a class="btn outline" href="#tryby">Zobacz, co cię czeka</a>
       </div>
       <p class="hero-note">Bez rejestracji, bez mikropłatności. <b>Tylko futbol.</b></p>
